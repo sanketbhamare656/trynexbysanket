@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TryNex by Sanket</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Clean + Bold Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* ===== Animated Gradient Background ===== */
+.bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #000, #0a0f1e, #000);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Floating Particles ===== */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: cyan;
+  opacity: 0.4;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(-10vh);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+/* ===== Main Content ===== */
+.container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #00ffff;
+  text-shadow: 0 0 25px #00ffff;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  margin-top: 15px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #ddd;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ===== Countdown ===== */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 35px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: rgba(0,255,255,0.08);
+  border: 1px solid rgba(0,255,255,0.5);
+  padding: 15px 20px;
+  min-width: 85px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+.box span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ffff;
+}
+
+.box small {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #bbb;
+}
+
+/* ===== Social CTA ===== */
+.social {
+  margin-top: 45px;
+}
+
+.social-title {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.social a {
+  display: block;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 800;
+  color: #00ffff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+.social a:hover {
+  text-shadow: 0 0 20px #00ffff;
+}
+
+footer {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #777;
+  z-index: 2;
+}
+
+/* ===== Mobile spacing ===== */
+@media(max-width: 480px) {
+  .box {
+    min-width: 70px;
+    padding: 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- Particles -->
+<script>
+for (let i = 0; i < 80; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + 'vw';
+  p.style.animationDuration = (5 + Math.random() * 10) + 's';
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
+  <div>
+    <h1>TRYNEX IS UNLOCKING</h1>
+
+    <p class="subtitle">
+      A powerful digital space for tech minds, creators, and builders  
+      is taking shape.  
+      Until the reveal, the journey continues where the energy already lives.
+    </p>
+
+    <div class="countdown">
+      <div class="box"><span id="days">00</span><small>DAYS</small></div>
+      <div class="box"><span id="hours">00</span><small>HOURS</small></div>
+      <div class="box"><span id="minutes">00</span><small>MINUTES</small></div>
+      <div class="box"><span id="seconds">00</span><small>SECONDS</small></div>
+    </div>
+
+    <div class="social">
+      <div class="social-title">Until then, explore on</div>
+      <a href="https://youtube.com/@trynexbysanket" target="_blank">
+        YOUTUBE: @TryNexBySanket
+      </a>
+      <a href="https://instagram.com/trynexbysanket" target="_blank">
+        INSTAGRAM: @TryNexBySanket
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+© 2026 TryNex by Sanket • Built for what’s next
+</footer>
+
+<script>
+const launchDate = new Date("Jan 26, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = launchDate - now;
+
+  document.getElementById("days").innerText =
+    Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText =
+    Math.floor((diff / (1000 * 60 * 60)) % 24);
+  document.getElementById("minutes").innerText =
+    Math.floor((diff / (1000 * 60)) % 60);
+  document.getElementById("seconds").innerText =
+    Math.floor((diff / 1000) % 60);
+}, 1000);
+</script>
+
+</body>
+</html>
